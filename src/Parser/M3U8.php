@@ -29,9 +29,9 @@ class M3U8
     /**
      * Read file into memory.
      * 
-     * @return $this
+     * @return \App\Parser\M3U8
      */
-    private function read()
+    private function read(): M3U8
     {
         $this->content = file_get_contents($this->name);
 
@@ -41,9 +41,9 @@ class M3U8
     /**
      * Extract links.
      * 
-     * @return $this
+     * @return \App\Parser\M3U8
      */
-    private function extract()
+    private function extract(): M3U8
     {
         preg_match_all("/#EXTINF:.+\n(.+)/m", $this->content, $matches, PREG_SET_ORDER, 0);
 
@@ -57,9 +57,9 @@ class M3U8
     /**
      * Get links.
      * 
-     * @return  array
+     * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->links;
     }

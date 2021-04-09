@@ -36,8 +36,10 @@ class Merge
 
     /**
      * Merge files.
+     * 
+     * @return \App\Merge
      */
-    public function merge()
+    public function merge(): Merge
     {
         $file = fopen($this->getDestinationFilePath(), 'a');
         $list = $this->fetch->getList();
@@ -51,7 +53,8 @@ class Merge
         }
 
         rmdir($path);
-
         fclose($file);
+
+        return $this;
     }
 }
