@@ -71,7 +71,7 @@ class Fetch
     }
 
     /**
-     * Get direction.
+     * Get directory.
      * 
      * @param  string  $file
      * @return string
