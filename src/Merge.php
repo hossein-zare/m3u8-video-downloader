@@ -50,6 +50,8 @@ class Merge
             unlink($itemPath);
         }
 
+        rmdir($path);
+
         fclose($file);
     }
 }
