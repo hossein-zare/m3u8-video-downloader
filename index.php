@@ -19,3 +19,6 @@ $fetch->download();
 
 $merge = new Merge($fetch, $outputFileName);
 $merge->merge();
+
+// Done
+echo $merge->getDestinationFilePath();

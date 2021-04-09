@@ -25,11 +25,21 @@ class Merge
     }
 
     /**
+     * Get the destination file path.
+     * 
+     * @return string
+     */
+    public function getDestinationFilePath(): string
+    {
+        return self::$DESTINATION_DIRECTORY . '/' . $this->outputFileName;
+    }
+
+    /**
      * Merge files.
      */
     public function merge()
     {
-        $file = fopen(self::$DESTINATION_DIRECTORY . '/' . $this->outputFileName, 'a');
+        $file = fopen($this->getDestinationFilePath(), 'a');
         $list = $this->fetch->getList();
         $path = $this->fetch->getFolderPath();
 
