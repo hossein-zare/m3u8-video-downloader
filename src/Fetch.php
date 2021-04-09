@@ -7,6 +7,13 @@ use App\Parser\M3U8;
 class Fetch
 {
     /**
+     * The temp files directory.
+     * 
+     * @var string
+     */
+    public static string $TEMP_DIRECTORY = "tmp";
+
+    /**
      * The file list.
      * 
      * @var array
@@ -60,7 +67,7 @@ class Fetch
      */
     public function getFolderPath(): string
     {
-        return 'files/' . $this->parser->name;
+        return self::$TEMP_DIRECTORY . '/' . $this->parser->name;
     }
 
     /**

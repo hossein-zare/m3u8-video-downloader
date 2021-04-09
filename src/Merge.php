@@ -7,12 +7,19 @@ use App\Fetch;
 class Merge
 {
     /**
+     * The destination directory.
+     * 
+     * @var string
+     */
+    public static string $DESTINATION_DIRECTORY = "destination";
+
+    /**
      * Create a new instance.
      * 
      * @param  \App\Fetch  $fetch
-     * @param  string  $outputName
+     * @param  string  $outputFileName
      */
-    public function __construct(private Fetch $fetch, private string $outputName)
+    public function __construct(private Fetch $fetch, private string $outputFileName)
     {
         //
     }
@@ -22,7 +29,7 @@ class Merge
      */
     public function merge()
     {
-        $file = fopen('output/' . $this->outputName, 'a');
+        $file = fopen(self::$DESTINATION_DIRECTORY . '/' . $this->outputFileName, 'a');
         $list = $this->fetch->getList();
         $path = $this->fetch->getFolderPath();
 

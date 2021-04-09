@@ -7,12 +7,15 @@ use App\Parser\M3U8;
 use App\Fetch;
 use App\Merge;
 
+Fetch::$TEMP_DIRECTORY = "tmp";
+Merge::$DESTINATION_DIRECTORY = "destination";
+
 $fileName = "fileName.m3u8";
 $outputFileName = "output.ts";
 
-$m3u8 = new M3U8($name);
+$m3u8 = new M3U8($fileName);
 $fetch = new Fetch($m3u8);
 $fetch->download();
 
-$merge = new Merge($fetch, $outputName);
+$merge = new Merge($fetch, $outputFileName);
 $merge->merge();
