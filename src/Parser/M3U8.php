@@ -13,6 +13,8 @@ class M3U8
 
     /**
      * The extracted links.
+     * 
+     * @var array
      */
     private array $links = [];
 
@@ -33,7 +35,10 @@ class M3U8
      */
     private function read(): M3U8
     {
-        $this->content = file_get_contents($this->name);
+        $this->content = @file_get_contents($this->name);
+
+        if (empty($this->content))
+            throw new \Exception("The m3u8 file doesn't exist.");
 
         return $this;
     }
@@ -50,6 +55,9 @@ class M3U8
         foreach ($matches as $match) {
             array_push($this->links, $match[1]);
         }
+
+        if (count($matches) === 0)
+            throw new \Exception("The m3u8 file is invalid.");
 
         return $this;
     }

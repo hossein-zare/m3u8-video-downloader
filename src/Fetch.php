@@ -83,6 +83,8 @@ class Fetch
 
     /**
      * Get list.
+     * 
+     * @return array
      */
     public function getList(): array
     {

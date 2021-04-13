@@ -13,12 +13,17 @@ Merge::$DESTINATION_DIRECTORY = "destination";
 $fileName = "fileName.m3u8";
 $outputFileName = "output.ts";
 
-$m3u8 = new M3U8($fileName);
-$fetch = new Fetch($m3u8);
-$fetch->download();
+try {
+    $m3u8 = new M3U8($fileName);
 
-$merge = new Merge($fetch, $outputFileName);
-$merge->merge();
+    $fetch = new Fetch($m3u8);
+    $fetch->download();
+
+    $merge = new Merge($fetch, $outputFileName);
+    $merge->merge();
+} catch (\Exception $e) {
+    die($e->getMessage());
+}
 
 // Done
 echo $merge->getDestinationFilePath();
